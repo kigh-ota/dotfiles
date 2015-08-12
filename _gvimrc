@@ -1,0 +1,7 @@
+"set guifont=MS_Gothic:h9
+set guifont=Migu_1M:h9
+set lines=40
+set columns=80
+
+colorscheme koehler
+set guioptions-=T
