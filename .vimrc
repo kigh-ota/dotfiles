@@ -10,9 +10,6 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/caw.vim.git'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'plasticboy/vim-markdown'
 if has('vim_starting')
 	call neobundle#end()
 endif
@@ -142,6 +139,3 @@ endif
 let g:lightline = {
 			\ 'colorscheme': 'wombat',
 			\ }
-
-" md as markdown, instead of modula2
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
