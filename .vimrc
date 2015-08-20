@@ -142,3 +142,6 @@ endif
 let g:lightline = {
 			\ 'colorscheme': 'wombat',
 			\ }
+
+" md as markdown, instead of modula2
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
