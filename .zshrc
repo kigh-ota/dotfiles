@@ -22,6 +22,7 @@ export MYINCLUDE=$HOME/include
 export MYSCRIPT=$HOME/script
 export EDITOR=vim
 export LSCOLORS=ExFxCxdxBxegedabagacad
+export TERM=xterm-256color
 
 #setopt correct
 setopt list_packed
@@ -73,6 +74,7 @@ alias pd=popd
 alias -g G='| grep'
 alias -g L='| ${PAGER}'
 alias -s eps=gv
+alias lv='lv -c'
 #alias -s rb=ruby
 #ulimit -c unlimited
 setopt complete_aliases
