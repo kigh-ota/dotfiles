@@ -11,7 +11,7 @@ NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/caw.vim.git'
 NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-rails'	
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'plasticboy/vim-markdown'
 if has('vim_starting')
 	call neobundle#end()
@@ -144,8 +144,10 @@ let g:lightline = {
 			\ }
 
 " Markdown highlighting
-set syntax=markdown
-au BufRead,BufNewFile *.md set filetype=markdown
-au BufNewFile,BufRead *.erb    setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.rb    setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.coffee    setlocal tabstop=2 shiftwidth=2 expandtab
+
+" md as markdown, instead of modula2
+au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  set filetype=markdown
+au BufRead,BufNewFile *.md   set filetype=markdown
+au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2 expandtab
