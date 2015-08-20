@@ -10,6 +10,9 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/caw.vim.git'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-rails'	
+NeoBundle 'plasticboy/vim-markdown'
 if has('vim_starting')
 	call neobundle#end()
 endif
