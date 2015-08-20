@@ -90,6 +90,19 @@ SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
 #[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
 #	PROMPT="%{37m%}${HOST%%.*} ${PROMPT}"
 
+# vcs_infoロード    
+autoload -Uz vcs_info    
+# PROMPT変数内で変数参照する    
+setopt prompt_subst    
+
+# vcsの表示    
+zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
+zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
+# プロンプト表示直前にvcs_info呼び出し    
+precmd() { vcs_info }    
+# プロンプト表示    
+RPROMPT='%B[${vcs_info_msg_0_}]%b'
+
 setopt autopushd
 setopt PUSHD_IGNORE_DUPS
 setopt auto_cd
