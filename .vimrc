@@ -145,12 +145,6 @@ if has('gui_macvim')
 	set visualbell
 endif
 
-if has('win32') || has('win64')
-	set guifont=Migu_1M:h10
-	set nobackup
-	set noundofile
-endif
-
 let g:lightline = {
 			\ 'colorscheme': 'wombat',
 			\ }
