@@ -1,3 +1,3 @@
 #!/bin/sh
-ln -sf ./.vimrc ~/.vimrc
-ln -sf ./.zshrc ~/.zshrc
+ln -sf ~/dotfiles/.vimrc ~/.vimrc
+ln -sf ~/dotfiles/.zshrc ~/.zshrc

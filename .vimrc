@@ -2,8 +2,13 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#begin(expand('~/.vim/bundle/'))
+	if has('win32') || has('win64')
+		set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+		call neobundle#begin(expand('~/vimfiles/bundle/'))
+	else
+		set runtimepath+=~/.vim/bundle/neobundle.vim/
+		call neobundle#begin(expand('~/.vim/bundle/'))
+	endif
 endif
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'thinca/vim-quickrun'
@@ -31,6 +36,8 @@ set noincsearch
 set nowrapscan
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+let &statusline .= '%{&bomb ? "[BOM]" : ""}'
+
 filetype plugin indent on
 syntax on
 
@@ -127,7 +134,7 @@ set path=.,/usr/include/,$HOME/include
 
 if has('gui_macvim')
 	set transparency=5
-	set guifont=Menlo:h12
+	set guifont=Menlo Regular:h12
 	set lines=60 columns=80
 	colorscheme koehler
 	set clipboard=unnamed
@@ -136,6 +143,12 @@ if has('gui_macvim')
 	noremap! \ ¥
 
 	set visualbell
+endif
+
+if has('win32') || has('win64')
+	set guifont=Migu_1M:h10
+	set nobackup
+	set noundofile
 endif
 
 let g:lightline = {
@@ -150,3 +163,13 @@ au BufRead,BufNewFile *.md   set filetype=markdown
 au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2 expandtab
+
+if has('win32') || has('win64')
+	if filereadable(expand('~/_vimrc_local'))
+		source ~/_vimrc_local
+	endif
+else
+	if filereadable(expand('~/.vimrc.local'))
+		source ~/.vimrc.local
+	endif
+endif
