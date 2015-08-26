@@ -150,3 +150,4 @@ au BufRead,BufNewFile *.md   set filetype=markdown
 au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2 expandtab
