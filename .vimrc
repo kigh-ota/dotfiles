@@ -158,6 +158,7 @@ au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2 expandtab
 
 if has('win32') || has('win64')
 	if filereadable(expand('~/_vimrc_local'))
