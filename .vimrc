@@ -2,8 +2,13 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#begin(expand('~/.vim/bundle/'))
+	if has('win32') || has('win64')
+		set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+		call neobundle#begin(expand('~/vimfiles/bundle/'))
+	else
+		set runtimepath+=~/.vim/bundle/neobundle.vim/
+		call neobundle#begin(expand('~/.vim/bundle/'))
+	endif
 endif
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'thinca/vim-quickrun'
@@ -31,6 +36,8 @@ set noincsearch
 set nowrapscan
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+let &statusline .= '%{&bomb ? "[BOM]" : ""}'
+
 filetype plugin indent on
 syntax on
 
@@ -151,3 +158,13 @@ au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2 expandtab
 au BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2 expandtab
+
+if has('win32') || has('win64')
+	if filereadable(expand('~/_vimrc_local'))
+		source ~/_vimrc_local
+	endif
+else
+	if filereadable(expand('~/.vimrc.local'))
+		source ~/.vimrc.local
+	endif
+endif
