@@ -41,8 +41,9 @@ let &statusline .= '%{&bomb ? "[BOM]" : ""}'
 filetype plugin indent on
 syntax on
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 set backspace=indent,eol,start
 set ruler
@@ -154,9 +155,10 @@ let g:lightline = {
 " md as markdown, instead of modula2
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  set filetype=markdown
 au BufRead,BufNewFile *.md   set filetype=markdown
-au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2 expandtab
-au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2 expandtab
+au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
 
 if has('win32') || has('win64')
 	if filereadable(expand('~/_vimrc_local'))
