@@ -150,8 +150,6 @@ let g:lightline = {
 			\ 'colorscheme': 'wombat',
 			\ }
 
-" Markdown highlighting
-
 " md as markdown, instead of modula2
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  set filetype=markdown
 au BufRead,BufNewFile *.md   set filetype=markdown
@@ -170,3 +168,4 @@ else
 		source ~/.vimrc.local
 	endif
 endif
+
