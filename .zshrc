@@ -14,8 +14,6 @@ esac
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
-setopt HIST_IGNORE_DUPS	# 直前と同一なら登録しない
-setopt SHARE_HISTORY
 
 # 各種環境変数
 export MYINCLUDE=$HOME/include
@@ -23,9 +21,8 @@ export MYSCRIPT=$HOME/script
 export EDITOR=vim
 export LSCOLORS=ExFxCxdxBxegedabagacad
 export TERM=xterm-256color
-
-#setopt correct
-setopt list_packed
+typeset -U path cdpath fpath manpath
+export PATH=$PATH:$HOME/bin:$HOME/script
 
 bindkey -v	# コマンドライン編集：vi挿入モード風キー割当
 
@@ -77,7 +74,6 @@ alias -s eps=gv
 alias lv='lv -c'
 #alias -s rb=ruby
 #ulimit -c unlimited
-setopt complete_aliases
 
 ## プロンプトの設定
 # %B:太字開始 %b:太字終了
@@ -92,31 +88,37 @@ SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
 #[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
 #	PROMPT="%{37m%}${HOST%%.*} ${PROMPT}"
 
-# vcs_infoロード    
-autoload -Uz vcs_info    
-# PROMPT変数内で変数参照する    
-setopt prompt_subst    
+autoload -Uz vcs_info # vcs_infoロード    
+setopt prompt_subst # PROMPT変数内で変数参照する    
 
-# vcsの表示    
 zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
 zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
-# プロンプト表示直前にvcs_info呼び出し    
-precmd() { vcs_info }    
-# プロンプト表示    
+precmd() { vcs_info } # プロンプト表示直前にvcs_info呼び出し    
 RPROMPT='%B[${vcs_info_msg_0_}]%b'
 
+# 各種オプション
+setopt hist_ignore_dups	# 直前と同一なら登録しない
+setopt share_history
+#setopt correct # スペルチェック
 setopt autopushd
-setopt PUSHD_IGNORE_DUPS
-setopt auto_cd
+setopt pushd_ignore_dups
+setopt auto_cd  # ディレクトリ名だけでcdする
 setopt noautoremoveslash
-setopt EXTENDED_GLOB
+setopt extended_blob  # 高機能なワイルドカード展開
+setopt long_list_jobs # jobsの表示を拡張
+setopt list_types
+setopt auto_menu  # 補完候補をtabで選択
+setopt list_packed  # 補完候補を詰めて表示
+setopt no_flow_control  # ^s, ^q を無効
+setopt brace_ccl  # {a-c}で展開できるなど
+setopt complete_aliases # aliasを補完
+setopt interactive_comments # '#'以降をコメント扱い
 
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey '^P' history-beginning-search-backward-end
 bindkey '^N' history-beginning-search-forward-end
-
 #bindkey '^P' up-line-or-history
 #bindkey '^N' down-line-or-history
 bindkey '^A' beginning-of-line
@@ -127,8 +129,6 @@ bindkey '^D' delete-char-or-list
 bindkey '^U' kill-whole-line
 bindkey '^K' kill-line
 bindkey -a 'q' push-line
-
-export PATH=$PATH:$HOME/bin:$HOME/script
 
 # for screen
 #pwdname="~"
