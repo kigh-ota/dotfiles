@@ -104,7 +104,7 @@ setopt autopushd
 setopt pushd_ignore_dups
 setopt auto_cd  # ディレクトリ名だけでcdする
 setopt noautoremoveslash
-setopt extended_blob  # 高機能なワイルドカード展開
+setopt extended_glob  # 高機能なワイルドカード展開
 setopt long_list_jobs # jobsの表示を拡張
 setopt list_types
 setopt auto_menu  # 補完候補をtabで選択
