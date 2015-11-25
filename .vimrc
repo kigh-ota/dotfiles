@@ -1,6 +1,7 @@
-set nocompatible
-filetype off
+set nocompatible  " 挙動をviでなくVimデフォルトにする
+filetype off  " 一旦ファイルタイプ関連を無効化
 
+" プラグイン
 if has('vim_starting')
 	if has('win32') || has('win64')
 		set runtimepath+=~/vimfiles/bundle/neobundle.vim/
@@ -12,49 +13,53 @@ if has('vim_starting')
 endif
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'Shougo/unite.vim.git'  " ファイラ
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tyru/caw.vim.git'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-rails'
+NeoBundle 'scrooloose/nerdtree'   " ツリー表示
+NeoBundle 'tpope/vim-rails'       " Rails向けコマンド
+"NeoBundle 'plasticboy/vim-markdown' " 変なタブを入れてくるので却下
+NeoBundle 'kannokanno/previm' " for previewing markdown with :PrevimOpen
+NeoBundle 'tyru/open-browser.vim'
 if has('vim_starting')
 	call neobundle#end()
+  NeoBundleCheck  " インストールされていないbundleをチェック
 endif
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
+filetype plugin indent on
 
 " fileencodingsを前から順に試して，はじめにマッチしたものが採用される
 set encoding=utf-8
 "set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 set fileformats=unix,dos,mac
-
 set ignorecase
-set smartcase
-set hlsearch	"search hilighting
-set showmatch	"bracket
+set smartcase   
+set hlsearch	" search hilighting
+set showmatch	" 対応するカッコのハイライト
 set noincsearch
 set nowrapscan
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 let &statusline .= '%{&bomb ? "[BOM]" : ""}'
-
-filetype plugin indent on
-syntax on
-
-set tabstop=2
-set shiftwidth=2
-set expandtab
-
+set tabstop=2 " タブ文字表示幅
+set shiftwidth=2  " 挿入するインデントの幅
+set expandtab " タブ→空白
+set smartindent
 set backspace=indent,eol,start
-set ruler
+set ruler " カーソル位置を表示
 set showcmd
 set number
 set ambiwidth=double
 set whichwrap=b,s,[,],<,>,~
 set mouse=
+set noswapfile
+set wildmenu  " コマンドラインでTab補完
 "set cursorline
-
 set background=dark
+"set foldmethod=indent
+syntax on " 構文ごとに文字色を変化
+
+nmap <Leader>c <Plug>(caw:i:toggle)
+vmap <Leader>c <Plug>(caw:i:toggle)
 
 nmap n nzz
 nmap N Nzz
@@ -62,8 +67,6 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-
-"set foldmethod=indent
 
 " Vim-LaTeX用の設定
 " IMPORTANT: grep will sometimes skip displaying the file name if you
@@ -133,6 +136,7 @@ let g:SrcExpl_UpdateTags=1	" 自動でtagsを生成
 
 set path=.,/usr/include/,$HOME/include
 
+" 見た目の設定
 if has('gui_macvim')
 	set transparency=5
 	set guifont=Menlo:h12
@@ -152,7 +156,6 @@ let g:lightline = {
 
 " md as markdown, instead of modula2
 au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  set filetype=markdown
-au BufRead,BufNewFile *.md   set filetype=markdown
 au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
@@ -169,3 +172,4 @@ else
 	endif
 endif
 
+filetype on
