@@ -21,6 +21,11 @@ NeoBundle 'tpope/vim-rails'       " Rails向けコマンド
 "NeoBundle 'plasticboy/vim-markdown' " 変なタブを入れてくるので却下
 NeoBundle 'kannokanno/previm' " for previewing markdown with :PrevimOpen
 NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
+"let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
+"let g:SimpleJsIndenter_CaseIndentLevel = -1 " この設定入れるとswitchのインデントがいくらかマシに
+
+
 if has('vim_starting')
 	call neobundle#end()
   NeoBundleCheck  " インストールされていないbundleをチェック
