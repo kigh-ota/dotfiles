@@ -22,7 +22,7 @@ NeoBundle 'tpope/vim-rails'       " Rails向けコマンド
 NeoBundle 'kannokanno/previm' " for previewing markdown with :PrevimOpen
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
-"let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
+let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
 "let g:SimpleJsIndenter_CaseIndentLevel = -1 " この設定入れるとswitchのインデントがいくらかマシに
 
 
@@ -164,7 +164,7 @@ au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  set filetype=markdown
 au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.js  setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2
 
 if has('win32') || has('win64')
