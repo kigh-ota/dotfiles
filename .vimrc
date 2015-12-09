@@ -45,8 +45,9 @@ set nowrapscan
 set laststatus=2
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 let &statusline .= '%{&bomb ? "[BOM]" : ""}'
-set tabstop=2 " タブ文字表示幅
-set shiftwidth=2  " 挿入するインデントの幅
+set tabstop=4 " タブ文字表示幅
+set softtabstop=0 " Tabキーで挿入される空白数
+set shiftwidth=4  " 挿入するインデントの幅
 set expandtab " タブ→空白
 set smartindent
 set backspace=indent,eol,start
