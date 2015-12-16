@@ -169,7 +169,7 @@ set path=.,/usr/include/,$HOME/include
 if has('gui_macvim')
     set transparency=5
     set guifont=Menlo:h12
-    set lines=60 columns=80
+    set lines=60 columns=90
     colorscheme koehler
     set clipboard=unnamed
 
