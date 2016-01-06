@@ -66,6 +66,7 @@ alias j="jobs -l"
 alias du="du -h"
 alias df="df -h"
 alias su="su -l"
+alias grep="grep --color"
 alias cssh='cocot -t utf-8 -p EUC-JP ssh'
 alias pd=popd
 alias -g G='| grep'
