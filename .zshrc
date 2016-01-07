@@ -146,4 +146,5 @@ bindkey -a 'q' push-line
 
 if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
+    echo Called .zshrc.local
 fi
