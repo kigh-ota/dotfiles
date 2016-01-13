@@ -1,3 +1,4 @@
+set encoding=utf-8
 set nocompatible  " 挙動をviでなくVimデフォルトにする
 filetype off  " 一旦ファイルタイプ関連を無効化
 
@@ -33,7 +34,6 @@ endif
 filetype plugin indent on
 
 " fileencodingsを前から順に試して，はじめにマッチしたものが採用される
-set encoding=utf-8
 "set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 set fileformats=unix,dos,mac
 set ignorecase
