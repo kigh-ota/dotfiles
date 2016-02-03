@@ -84,13 +84,15 @@ alias lv='lv -c'
 ## Git関係エイリアス
 alias gc='git commit -v'    # -v: verbose
 alias gco='git checkout'
+compdef gco=git
 alias gcb='git checkout -b'
 alias gba='git branch -a'   # -a: リモート・ローカル両方
 alias ga='git add'
+alias gas='git add src'
 alias gm='git merge'
 alias gf='git fetch'
 alias gup='git fetch && git rebase'
-alias ggpush="git push origin $(current_branch)"
+alias ggpush="git push origin"
 alias grh='git reset HEAD'  # unstage all
 #alias grhh='git reset HEAD --hard'
 alias gd='git diff'
