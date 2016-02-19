@@ -11,7 +11,7 @@ else
     call neobundle#begin(expand('~/.vim/bundle/'))
 endif
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+"NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/unite.vim.git'  " ファイラ
 NeoBundle 'itchyny/lightline.vim'
