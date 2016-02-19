@@ -105,6 +105,7 @@ alias gl="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %
 alias gll='git log --stat --abbrev-commit'
 alias gln="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status"   # --name-status: author & file names
 alias glp='git log --oneline -n 20 -p'  # -p: diffも
+alias glfp="git log --first-parent --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'"
 
 ## プロンプトの設定
 # %B:太字開始 %b:太字終了
