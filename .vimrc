@@ -1,16 +1,16 @@
+set encoding=utf-8
 set nocompatible  " 挙動をviでなくVimデフォルトにする
 filetype off  " 一旦ファイルタイプ関連を無効化
 
 " プラグイン
-if has('vim_starting')
-    if has('win32') || has('win64')
-        set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-        call neobundle#begin(expand('~/vimfiles/bundle/'))
-    else
-        set runtimepath+=~/.vim/bundle/neobundle.vim/
-        call neobundle#begin(expand('~/.vim/bundle/'))
-    endif
+if has('win32') || has('win64')
+    set runtimepath+=~/vimfiles/bundle/neobundle.vim/
+    call neobundle#begin(expand('~/vimfiles/bundle/'))
+else
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    call neobundle#begin(expand('~/.vim/bundle/'))
 endif
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/unite.vim.git'  " ファイラ
@@ -24,16 +24,12 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
 "let g:SimpleJsIndenter_CaseIndentLevel = -1 " この設定入れるとswitchのインデントがいくらかマシに
-
-
-if has('vim_starting')
-    call neobundle#end()
-    NeoBundleCheck  " インストールされていないbundleをチェック
-endif
+"if has('vim_starting')
+call neobundle#end()
 filetype plugin indent on
+NeoBundleCheck  " インストールされていないbundleをチェック
 
 " fileencodingsを前から順に試して，はじめにマッチしたものが採用される
-set encoding=utf-8
 "set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 set fileformats=unix,dos,mac
 set ignorecase
