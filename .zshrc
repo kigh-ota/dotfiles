@@ -4,6 +4,11 @@ if [ -f ~/.zshrc.local.first ]; then
 	source ~/.zshrc.local.first
 fi
 
+source ~/dotfiles/oh-my-zsh/lib/git.zsh
+function current_branch() {
+  git_current_branch
+}
+
 # root なら環境言語を英語に指定
 case ${UID} in
 	0)
@@ -62,18 +67,45 @@ esac
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-alias j="jobs -l"
-alias du="du -h"
-alias df="df -h"
-alias su="su -l"
+alias j='jobs -l'
+alias du='du -h'
+alias df='df -h'
+alias su='su -l'
+alias grep='grep --color'
 alias cssh='cocot -t utf-8 -p EUC-JP ssh'
 alias pd=popd
-alias -g G='| grep'
-alias -g L='| ${PAGER}'
+# alias -g G='| grep'
+# alias -g L='| ${PAGER}'
 alias -s eps=gv
 alias lv='lv -c'
 #alias -s rb=ruby
 #ulimit -c unlimited
+
+## Git関係エイリアス
+alias gc='git commit -v'    # -v: verbose
+alias gco='git checkout'
+compdef gco=git
+alias gcb='git checkout -b'
+alias gba='git branch -a'   # -a: リモート・ローカル両方
+alias ga='git add'
+alias gas='git add src'
+alias gm='git merge'
+alias gf='git fetch'
+alias gup='git fetch && git rebase'
+alias ggpush="git push origin"
+alias grh='git reset HEAD'  # unstage all
+#alias grhh='git reset HEAD --hard'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gr='git rebase'
+alias gri='git rebase -i'
+alias gs='git status --short --branch'
+alias gst='git status'
+alias gl="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'"  # -n: number of commits
+alias gll='git log --stat --abbrev-commit'
+alias gln="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status"   # --name-status: author & file names
+alias glp='git log --oneline -n 20 -p'  # -p: diffも
+alias glfp="git log --first-parent --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'"
 
 ## プロンプトの設定
 # %B:太字開始 %b:太字終了
@@ -145,4 +177,5 @@ bindkey -a 'q' push-line
 
 if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
+    echo Called .zshrc.local
 fi
