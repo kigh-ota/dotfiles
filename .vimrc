@@ -55,6 +55,7 @@ set number
 set ambiwidth=double
 set wrap    " 折り返し
 set textwidth=0 " 自動改行を無効化
+autocmd FileType text setlocal textwidth=0  " Kaoriya版で折り返しを抑制
 set colorcolumn=80  " ラインを入れる
 set whichwrap=b,s,[,],<,>,~
 set mouse=
