@@ -4,11 +4,6 @@ if [ -f ~/.zshrc.local.first ]; then
 	source ~/.zshrc.local.first
 fi
 
-source ~/dotfiles/oh-my-zsh/lib/git.zsh
-function current_branch() {
-  git_current_branch
-}
-
 # root なら環境言語を英語に指定
 case ${UID} in
 	0)
@@ -84,7 +79,6 @@ alias lv='lv -c'
 ## Git関係エイリアス
 alias gc='git commit -v'    # -v: verbose
 alias gco='git checkout'
-compdef gco=git
 alias gcb='git checkout -b'
 alias gba='git branch -a'   # -a: リモート・ローカル両方
 alias ga='git add'
@@ -138,12 +132,12 @@ setopt auto_cd  # ディレクトリ名だけでcdする
 setopt noautoremoveslash
 setopt extended_glob  # 高機能なワイルドカード展開
 setopt long_list_jobs # jobsの表示を拡張
-setopt list_types
+setopt list_types   # ファイル種別をマーク表示
 setopt auto_menu  # 補完候補をtabで選択
 setopt list_packed  # 補完候補を詰めて表示
 setopt no_flow_control  # ^s, ^q を無効
 setopt brace_ccl  # {a-c}で展開できるなど
-setopt complete_aliases # aliasを補完
+# setopt complete_aliases # aliasを補完 -> ブランチ名展開を阻害するので無効化
 setopt interactive_comments # '#'以降をコメント扱い
 
 autoload history-search-end

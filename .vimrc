@@ -191,6 +191,7 @@ au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.js  setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.md  setlocal tabstop=2 shiftwidth=2
 
 if has('win32') || has('win64')
     if filereadable(expand('~/_vimrc_local'))
