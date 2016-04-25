@@ -22,6 +22,7 @@ NeoBundle 'tpope/vim-rails'       " Rails向けコマンド
 NeoBundle 'kannokanno/previm' " for previewing markdown with :PrevimOpen
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'derekwyatt/vim-scala'    " Scala用シンタックスハイライト
 let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
 "let g:SimpleJsIndenter_CaseIndentLevel = -1 " この設定入れるとswitchのインデントがいくらかマシに
 "if has('vim_starting')
@@ -170,8 +171,8 @@ if has('gui_macvim')
     colorscheme koehler
     set clipboard=unnamed
 
-    noremap! ¥ \
-    noremap! \ ¥
+    " noremap! ¥ \
+    " noremap! \ ¥
 
     set visualbell
 endif
@@ -193,6 +194,7 @@ au BufNewFile,BufRead *.js  setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.md  setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.scala setf scala
 
 if has('win32') || has('win64')
     if filereadable(expand('~/_vimrc_local'))
