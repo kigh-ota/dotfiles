@@ -83,6 +83,7 @@ alias gcb='git checkout -b'
 alias gba='git branch -a'   # -a: リモート・ローカル両方
 alias ga='git add'
 alias gas='git add src'
+alias gasm='git add src/main'
 alias gm='git merge'
 alias gf='git fetch'
 alias gup='git fetch && git rebase'
