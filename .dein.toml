@@ -1,0 +1,28 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+# ファイラ
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+# A light and configurable statusline/tabline for Vim
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+# Vim comment plugin
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'jiangmiao/simple-javascript-indenter'
+
+[[plugins]]
+# Scala用シンタックスハイライト
+repo = 'derekwyatt/vim-scala'

@@ -1,34 +1,56 @@
 set encoding=utf-8
-set nocompatible  " 挙動をviでなくVimデフォルトにする
+if !&compatible
+    set nocompatible  " 挙動をviでなくVimデフォルトにする
+endif
 filetype off  " 一旦ファイルタイプ関連を無効化
 
-" プラグイン
 if has('win32') || has('win64')
-    set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/vimfiles/bundle/'))
+  let s:cache_home = expand('~/vimfiles')
+  let s:toml = '~/_dein.toml'
+  " let s:lazy_toml = '~/_dein_lazy.toml'
 else
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/.vim/bundle/'))
+  let s:cache_home = expand('~/.vim')
+  let s:toml = '~/.dein.toml'
+  " let s:lazy_toml = '~/.dein_lazy.toml'
 endif
-NeoBundleFetch 'Shougo/neobundle.vim'
-"NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/unite.vim.git'  " ファイラ
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tyru/caw.vim.git'
-NeoBundle 'scrooloose/nerdtree'   " ツリー表示
-NeoBundle 'tpope/vim-rails'       " Rails向けコマンド
-"NeoBundle 'plasticboy/vim-markdown' " 変なタブを入れてくるので却下
-NeoBundle 'kannokanno/previm' " for previewing markdown with :PrevimOpen
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'derekwyatt/vim-scala'    " Scala用シンタックスハイライト
+
+" dein settings {{{
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+" なければgit clone
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+call dein#begin(s:dein_dir)
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  " 管理するプラグインを記述したファイル
+  call dein#load_toml(s:toml, {'lazy': 0})
+  " call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+" プラグインの追加・削除やtomlファイルの設定を変更した後は
+" 適宜 call dein#update や call dein#clear_state を呼んでください。
+" そもそもキャッシュしなくて良いならload_state/save_stateを呼ばないようにしてください。
+
+" vimprocだけは最初にインストールしてほしい
+if dein#check_install(['vimproc'])
+  call dein#install(['vimproc'])
+endif
+" その他インストールしていないものはこちらに入れる
+if dein#check_install()
+  call dein#install()
+endif
+" }}}
+
 let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
-"let g:SimpleJsIndenter_CaseIndentLevel = -1 " この設定入れるとswitchのインデントがいくらかマシに
-"if has('vim_starting')
-call neobundle#end()
+
 filetype plugin indent on
-NeoBundleCheck  " インストールされていないbundleをチェック
 
 " fileencodingsを前から順に試して，はじめにマッチしたものが採用される
 "set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
