@@ -1,46 +1,83 @@
-set encoding=utf-8
-set nocompatible  " 挙動をviでなくVimデフォルトにする
-filetype off  " 一旦ファイルタイプ関連を無効化
-
-" プラグイン
-if has('win32') || has('win64')
-    set runtimepath+=~/vimfiles/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/vimfiles/bundle/'))
-else
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#begin(expand('~/.vim/bundle/'))
+set encoding=utf-8 " Vim内部で使われるエンコーディング
+if !&compatible
+    set nocompatible  " 挙動をviでなくVimデフォルトにする
 endif
-NeoBundleFetch 'Shougo/neobundle.vim'
-"NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'Shougo/unite.vim.git'  " ファイラ
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tyru/caw.vim.git'
-NeoBundle 'scrooloose/nerdtree'   " ツリー表示
-NeoBundle 'tpope/vim-rails'       " Rails向けコマンド
-"NeoBundle 'plasticboy/vim-markdown' " 変なタブを入れてくるので却下
-NeoBundle 'kannokanno/previm' " for previewing markdown with :PrevimOpen
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'derekwyatt/vim-scala'    " Scala用シンタックスハイライト
-let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
-"let g:SimpleJsIndenter_CaseIndentLevel = -1 " この設定入れるとswitchのインデントがいくらかマシに
-"if has('vim_starting')
-call neobundle#end()
-filetype plugin indent on
-NeoBundleCheck  " インストールされていないbundleをチェック
+filetype off " ファイル形式の検出を無効に
 
-" fileencodingsを前から順に試して，はじめにマッチしたものが採用される
+" MEMO: 変数のスコープ
+" s: スクリプト内
+" b: バッファ内
+" w: ウィンドウ内
+" g: グローバル
+" v: エディタが定義/設定
+" l: 関数内
+" a: 関数引数用
+
+" MEMO: アンパサンド
+" set設定の頭に&を付けると、変数のように扱える
+
+if has('win32') || has('win64')
+  let s:cache_home = expand('~/vimfiles')
+  let s:toml = '~/_dein.toml'
+  " let s:lazy_toml = '~/_dein_lazy.toml'
+else
+  let s:cache_home = expand('~/.vim')
+  let s:toml = '~/.dein.toml'
+  " let s:lazy_toml = '~/.dein_lazy.toml'
+endif
+
+" dein settings {{{
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+" なければgit clone
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+call dein#begin(s:dein_dir)
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  " 管理するプラグインを記述したファイル
+  call dein#load_toml(s:toml, {'lazy': 0})
+  " call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+" プラグインの追加・削除やtomlファイルの設定を変更した後は
+" 適宜 call dein#update や call dein#clear_state を呼んでください。
+" そもそもキャッシュしなくて良いならload_state/save_stateを呼ばないようにしてください。
+
+" vimprocだけは最初にインストールしてほしい
+if dein#check_install(['vimproc'])
+  call dein#install(['vimproc'])
+endif
+" その他インストールしていないものはこちらに入れる
+if dein#check_install()
+  call dein#install()
+endif
+" }}}
+
+let g:SimpleJsIndenter_BriefMode = 1 " この設定入れるとshiftwidthを1にしてインデントしてくれる
+
+filetype plugin on " ファイル形式別プラグインの有効化
+filetype indent on " ファイル形式別インデントのロードを有効化
+
+" options {{{
+" 既存ファイル編集時に考慮される文字コードのリスト
+" 順に試して，はじめにマッチしたものがfileencodingに設定される
 "set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
-set fileformats=unix,dos,mac
-set ignorecase
-set smartcase
+set fileformats=unix,dos,mac " 改行(EOL)の種類
+set ignorecase " 検索でcase無視
+set smartcase " 検索で大文字があったらcase無視しない
 set hlsearch    " search hilighting
 set showmatch   " 対応するカッコのハイライト
 set matchtime=5 " ハイライト秒数
-set noincsearch
-set nowrapscan
-set laststatus=2
+set noincsearch " 検索の入力途中で飛ばない
+set nowrapscan " 検索でラップしない
+set laststatus=2 " 画面下部のステータス行を常に表示
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 let &statusline .= '%{&bomb ? "[BOM]" : ""}'
 set tabstop=4 " タブ文字表示幅
@@ -48,32 +85,37 @@ set softtabstop=0 " Tabキーで挿入される空白数
 set shiftwidth=4  " 挿入するインデントの幅
 set shiftround  " <や>でインデントする際にshiftwidthの倍数に丸める
 set expandtab " タブ→空白
-set smartindent
-set backspace=indent,eol,start
-set ruler " カーソル位置を表示
-set showcmd
-set number
-set ambiwidth=double
-set wrap    " 折り返し
+set smartindent " 行を追加したときの高度な自動インデント
+set autoindent " 新しい行のインデントを現在業と同じに
+set backspace=indent,eol,start " BS時がautoindent,改行,挿入区間を超える
+set ruler " カーソル座標表示
+set showcmd " コマンドを最下行に表示
+set number " 行番号
+set ambiwidth=double " East Asian Width Class Ambiguous文字をどう扱うか
+set wrap " 折り返し
 set textwidth=0 " 自動改行を無効化
-autocmd FileType text setlocal textwidth=0  " Kaoriya版で折り返しを抑制
-set colorcolumn=80  " ラインを入れる
-set whichwrap=b,s,[,],<,>,~
+autocmd FileType text setlocal textwidth=0 " Kaoriya版で折り返しを抑制
+set colorcolumn=80 " ラインを入れる
+set whichwrap=b,s,[,],<,>,~ " BS,Space,Left,Right,~で行を超えられる
 set mouse=
-set nowritebackup
-set nobackup
-set noswapfile
-set list    " 不可視文字の可視化 
+"set nowritebackup " ファイル上書き前の一時的バックアップをしない
+set nobackup " 上書き時のバックアップを取っておく
+"set noswapfile " スワップファイルを作らない
+set list " 不可視文字の可視化 
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
-set wildmenu  " コマンドラインでTab補完
+set wildmenu " コマンドラインでTab補完
 set matchpairs& matchpairs+=<:> " 対応カッコを追加
 "set cursorline
 set background=dark
 "set foldmethod=indent
+" }}}
+
 syntax on " 構文ごとに文字色を変化
 
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
+" MEMO: マップコマンド
+" nmap ノーマル
+" vmap ビジュアル、選択
+" http://vim-jp.org/vimdoc-ja/map.html#map-overview
 
 " 検索でジャンプした際画面中央に
 nmap n nzz
@@ -94,6 +136,12 @@ nnoremap <S-Up>    <C-w>-<CR>
 nnoremap <S-Down>  <C-w>+<CR>
 " w!! でスーパーユーザーとして保存（sudoが使える環境限定）
 cmap w!! w !sudo tee > /dev/null %
+
+" Plugin settings {{{
+
+" cawプラグイン用の設定
+nmap <Leader>c <Plug>(caw:i:toggle)
+vmap <Leader>c <Plug>(caw:i:toggle)
 
 " Vim-LaTeX用の設定
 " IMPORTANT: grep will sometimes skip displaying the file name if you
@@ -148,18 +196,7 @@ let g:Tex_IgnoredWarnings =
 " 最後の5つはIEICEクラスファイル用
 let g:Tex_IgnoreLevel = 29
 
-" For screen
-"function SetScreenTabName(name)
-"	let arg = 'k' . a:name . '\\'
-"	silent! exe '!echo -n "' . arg . "\""
-"endfunction
-"
-"autocmd VimLeave * call SetScreenTabName('(zsh)')
-"autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | call SetScreenTabName("(vim %)") | endif 
-
-" srcexpl.vim用設定
-let g:SrcExpl_RefreshTime=1	" 自動的にプレビュー表示
-let g:SrcExpl_UpdateTags=1	" 自動でtagsを生成
+" }}}
 
 set path=.,/usr/include/,$HOME/include
 
@@ -185,15 +222,16 @@ let g:lightline = {
             \ 'colorscheme': 'wombat',
             \ }
 
-" md as markdown, instead of modula2
-au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  set filetype=markdown
+" MEMO
+" au[tocmd] [group] {event} {pat} [nested] {cmd}
+au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  setlocal filetype=markdown " md as markdown, instead of modula2
+au BufNewFile,BufRead *.md  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.erb  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.js  setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.js  setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *.md  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.scala setf scala
 
 if has('win32') || has('win64')
@@ -206,4 +244,9 @@ else
     endif
 endif
 
-filetype on
+" 引数なしならNERDTreeを起動
+let file_name = expand('%')
+if has('vim_starting') && file_name == ''
+    au VimEnter * NERDTree ./
+endif
+
