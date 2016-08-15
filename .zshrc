@@ -22,7 +22,7 @@ export EDITOR=vim
 export LSCOLORS=ExFxCxdxBxegedabagacad
 export TERM=xterm-256color
 typeset -U path cdpath fpath manpath
-export PATH=$PATH:$HOME/bin:$HOME/script
+export PATH=$HOME/bin:$HOME/script:$PATH
 
 bindkey -v	# コマンドライン編集：vi挿入モード風キー割当
 
