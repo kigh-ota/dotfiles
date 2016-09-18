@@ -140,8 +140,8 @@ cmap w!! w !sudo tee > /dev/null %
 " Plugin settings {{{
 
 " cawプラグイン用の設定
-nmap <Leader>c <Plug>(caw:i:toggle)
-vmap <Leader>c <Plug>(caw:i:toggle)
+nmap <Leader>c <Plug>(caw:hatpos:toggle)
+vmap <Leader>c <Plug>(caw:hatpos:toggle)
 
 " Vim-LaTeX用の設定
 " IMPORTANT: grep will sometimes skip displaying the file name if you
