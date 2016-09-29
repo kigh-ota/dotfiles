@@ -99,6 +99,8 @@ alias gs='git status --short --branch'
 alias gst='git status'
 alias gsh='git stash'
 alias gsha='git stash apply'
+alias gshl='git stash list'
+alias gshd='git stash drop'
 alias gl="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'"  # -n: number of commits
 alias gll='git log --stat --abbrev-commit'
 alias gln="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset' --name-status"   # --name-status: author & file names
