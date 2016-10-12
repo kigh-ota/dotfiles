@@ -98,7 +98,7 @@ alias gcp='git cherry-pick'
 alias gs='git status --short --branch'
 alias gst='git status'
 alias gsh='git stash'
-alias gsha='git stash apply'
+alias gshp='git stash pop'
 alias gshl='git stash list'
 alias gshd='git stash drop'
 alias gl="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'"  # -n: number of commits
