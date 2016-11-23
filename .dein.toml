@@ -26,3 +26,7 @@ repo = 'jiangmiao/simple-javascript-indenter'
 [[plugins]]
 # Scala用シンタックスハイライト
 repo = 'derekwyatt/vim-scala'
+
+[[plugins]]
+# ES6 syntax highlight
+repo = 'othree/yajs.vim'
