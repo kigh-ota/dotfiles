@@ -26,3 +26,7 @@ repo = 'jiangmiao/simple-javascript-indenter'
 [[plugins]]
 # Scala用シンタックスハイライト
 repo = 'derekwyatt/vim-scala'
+
+[[plugins]]
+# Git wrapper
+repo = 'tpope/vim-fugitive'
