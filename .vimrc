@@ -124,6 +124,7 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
+nmap gr :vim <C-R><C-W> * \| cw<CR>
 " ESC2回でハイライト消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
