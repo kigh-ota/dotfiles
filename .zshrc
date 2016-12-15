@@ -123,13 +123,18 @@ SPROMPT="%B%{[36m%}%r is correct? [n,y,a,e]:%{[m%}%b "
 #[ -n "${REMOTEHOST}${SSH_CONNECTION}" ] &&
 #	PROMPT="%{37m%}${HOST%%.*} ${PROMPT}"
 
-autoload -Uz vcs_info # vcs_infoロード    
-setopt prompt_subst # PROMPT変数内で変数参照する    
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
-zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
-precmd() { vcs_info } # プロンプト表示直前にvcs_info呼び出し    
-RPROMPT='%B[${vcs_info_msg_0_}]%b'
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:*' formats '[%s][* %F{green}%b%f]'
+zstyle ':vcs_info:*' actionformats '[%s][* %b(%F{red}%a%f)]'
+
+function _update_vcs_info_msg() {
+  LANG=en_US.UTC-8 vcs_info
+  RPROMPT="${vcs_info_msg_0_}"
+}
+add-zsh-hook precmd _update_vcs_info_msg
 
 # 各種オプション
 setopt hist_ignore_dups	# 直前と同一なら登録しない
