@@ -183,6 +183,8 @@ bindkey -a 'q' push-line
 #	echo -ne "k[${pwdname}]\\" 
 #}
 
+source ~/dotfiles/bd.zsh
+
 if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
     echo Called .zshrc.local
