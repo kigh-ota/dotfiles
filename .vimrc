@@ -252,3 +252,5 @@ if has('vim_starting') && file_name == ''
     au VimEnter * NERDTree ./
 endif
 
+" Macで crontab -e するのに必要
+set backupskip=/tmp/*,/private/tmp/*
