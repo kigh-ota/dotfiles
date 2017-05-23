@@ -4,6 +4,9 @@ tap 'homebrew/core'
 tap 'homebrew/versions'
 brew 'mas'
 brew 'lv'
+brew 'nodebrew'
+brew 'mycli'
+brew 'wget'
 
 brew 'gauche'
 
