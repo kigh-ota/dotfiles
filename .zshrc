@@ -80,6 +80,7 @@ alias lv='lv -c'
 alias gc='git commit -v'    # -v: verbose
 alias gco='git checkout'
 alias gcb='git checkout -b'
+alias gb='git branch'
 alias gba='git branch -a'   # -a: リモート・ローカル両方
 alias ga='git add'
 alias gas='git add src'
