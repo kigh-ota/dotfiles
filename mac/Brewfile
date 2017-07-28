@@ -9,6 +9,7 @@ brew 'mycli'
 brew 'wget'
 
 brew 'gauche'
+brew 'ant'
 
 cask 'google-chrome'
 cask 'google-japanese-ime'
