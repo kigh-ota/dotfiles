@@ -34,3 +34,9 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 # ES6 syntax highlight
 repo = 'othree/yajs.vim'
+
+[[plugins]]
+repo = 'xolox/vim-misc'
+
+[[plugins]]
+repo = 'xolox/vim-notes'

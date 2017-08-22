@@ -1,0 +1,28 @@
+tap 'caskroom/cask'
+tap 'homebrew/bundle'
+tap 'homebrew/core'
+tap 'homebrew/versions'
+brew 'mas'
+brew 'lv'
+brew 'nodebrew'
+brew 'mycli'
+brew 'wget'
+
+brew 'gauche'
+brew 'ant'
+
+cask 'google-chrome'
+cask 'google-japanese-ime'
+cask 'dropbox'
+cask 'cisco-proximity'
+cask 'virtualbox'
+cask 'firefox'
+cask 'dwihn0r-keepassx'
+cask 'visual-studio-code'
+cask 'iterm2'
+
+mas 'CotEditor', id: 1024640650
+mas 'Cybozu Desktop', id: 905155357
+mas 'Keynote', id: 409183694
+mas 'Slack', id: 803453959
+mas 'Twitter', id: 409789998

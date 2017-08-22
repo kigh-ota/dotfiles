@@ -225,16 +225,17 @@ let g:lightline = {
 
 " MEMO
 " au[tocmd] [group] {event} {pat} [nested] {cmd}
-au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*}  setlocal filetype=markdown " md as markdown, instead of modula2
-au BufNewFile,BufRead *.md      setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setlocal filetype=markdown " md as markdown, instead of modula2
+au BufNewFile,BufRead *.md      setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.erb     setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.html  setlocal tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.html    setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4 noexpandtab
-au BufNewFile,BufRead *.scala setf scala
+au BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.scala   setf scala
+au BufNewFile,BufRead *.{yml,yaml}  setlocal tabstop=2 shiftwidth=2
 
 if has('win32') || has('win64')
     if filereadable(expand('~/_vimrc_local'))
@@ -254,3 +255,5 @@ endif
 
 " Macで crontab -e するのに必要
 set backupskip=/tmp/*,/private/tmp/*
+
+"source ~/txt.vimrc
