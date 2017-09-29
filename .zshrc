@@ -1,4 +1,4 @@
-echo Called .zshrc
+echo Called $0
 
 if [ -f ~/.zshrc.local.first ]; then
 	source ~/.zshrc.local.first
@@ -187,6 +187,5 @@ bindkey -a 'q' push-line
 source ~/dotfiles/bd.zsh
 
 if [ -f ~/.zshrc.local ]; then
-	source ~/.zshrc.local
-    echo Called .zshrc.local
+    source ~/.zshrc.local
 fi
