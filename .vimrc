@@ -110,6 +110,13 @@ set background=dark
 "set foldmethod=indent
 " }}}
 
+" iTerm2でシンタックスハイライトを有効にするため
+let OSTYPE = system('uname')
+if OSTYPE == "Darwin\n"
+  :set term=xterm-256color
+  :syntax on
+endif
+
 syntax on " 構文ごとに文字色を変化
 
 " MEMO: マップコマンド
