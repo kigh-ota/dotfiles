@@ -109,6 +109,7 @@ set matchpairs& matchpairs+=<:> " 対応カッコを追加
 set background=dark
 "set foldmethod=indent
 " }}}
+set modeline
 
 " iTerm2でシンタックスハイライトを有効にするため
 let OSTYPE = system('uname')
