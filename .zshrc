@@ -190,3 +190,7 @@ if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
     echo Called .zshrc.local
 fi
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/kaiichiro/.nodebrew/node/v8.6.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/kaiichiro/.nodebrew/node/v8.6.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
