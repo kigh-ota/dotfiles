@@ -241,6 +241,7 @@ au BufNewFile,BufRead *.coffee  setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.html    setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.json    setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.css     setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.scala   setf scala
