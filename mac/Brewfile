@@ -31,6 +31,7 @@ cask 'music-manager'
 cask 'kindle'
 cask 'vlc'
 cask 'slack'
+cask 'zoomus'
 
 mas 'CotEditor', id: 1024640650
 #mas 'Cybozu Desktop', id: 905155357
