@@ -1,7 +1,5 @@
-tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
-tap 'homebrew/versions'
 brew 'mas'
 brew 'lv'
 brew 'nodebrew'
@@ -22,7 +20,7 @@ cask 'firefox'
 cask 'keepassx'
 cask 'visual-studio-code'
 cask 'iterm2'
-cask 'sqlitebrowser'
+cask 'db-browser-for-sqlite'
 cask 'intellij-idea'
 #cask 'mactex'
 cask 'keepassxc'
@@ -37,4 +35,4 @@ cask 'zoomus'
 mas 'CotEditor', id: 1024640650
 #mas 'Cybozu Desktop', id: 905155357
 mas 'Keynote', id: 409183694
-mas 'Todoist', id: 585829637
+#mas 'Todoist', id: 585829637
