@@ -2,9 +2,10 @@ tap 'homebrew/bundle'
 tap 'homebrew/core'
 brew 'mas'
 brew 'lv'
-brew 'nodebrew'
+brew 'nodenv'
 brew 'mycli'
 brew 'wget'
+brew 'jq'
 
 cask 'java'
 
@@ -36,3 +37,4 @@ mas 'CotEditor', id: 1024640650
 mas 'Cybozu Desktop', id: 905155357
 mas 'Keynote', id: 409183694
 #mas 'Todoist', id: 585829637
+
