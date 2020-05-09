@@ -102,7 +102,8 @@ set mouse=
 set nobackup " 上書き時のバックアップを取っておく
 "set noswapfile " スワップファイルを作らない
 set list " 不可視文字の可視化 
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
+"set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set wildmenu " コマンドラインでTab補完
 set matchpairs& matchpairs+=<:> " 対応カッコを追加
 "set cursorline
