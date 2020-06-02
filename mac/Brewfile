@@ -6,6 +6,7 @@ brew 'nodenv'
 brew 'mycli'
 brew 'wget'
 brew 'jq'
+brew 'watch'
 
 cask 'java'
 
