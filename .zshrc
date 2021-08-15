@@ -108,6 +108,8 @@ alias gln="git log --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset 
 alias glp='git log --oneline -n 20 -p'  # -p: diffも
 alias glfp="git log --first-parent --graph -n 20 --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(green)- %an, %cr%Creset'"
 
+alias g='cd $(ghq root)/$(ghq list | peco)'
+
 ## Ruby関係
 alias be='bundle exec'
 

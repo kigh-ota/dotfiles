@@ -8,6 +8,9 @@ brew 'wget'
 brew 'jq'
 brew 'watch'
 brew 'colordiff'
+brew 'peco'
+brew 'ghq'
+
 brew 'gauche'
 brew 'ant'
 
