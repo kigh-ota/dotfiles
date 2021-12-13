@@ -112,7 +112,7 @@ alias be='bundle exec'
 # K8s
 source <(kubectl completion zsh)
 alias k=kubectl
-complete -o default -F __start_kubectl k
+compdef __start_kubectl k
 
 ## プロンプトの設定
 # %B:太字開始 %b:太字終了
