@@ -267,4 +267,10 @@ endif
 " Macで crontab -e するのに必要
 set backupskip=/tmp/*,/private/tmp/*
 
+let g:copilot_filetypes = {
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'yaml': v:true
+    \ }
+
 "source ~/txt.vimrc
