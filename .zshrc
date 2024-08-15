@@ -78,6 +78,7 @@ alias lv='lv -c'
 
 ## Git関係エイリアス
 alias gc='git commit -v'    # -v: verbose
+alias gsw='git switch'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gb='git branch'
