@@ -198,3 +198,13 @@ fi
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /Users/kaiichiro/.nodebrew/node/v8.6.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/kaiichiro/.nodebrew/node/v8.6.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
 
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/kaiichiro/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
